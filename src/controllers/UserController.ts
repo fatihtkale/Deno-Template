@@ -30,8 +30,23 @@ const AddUser = async (
   }
 };
 
+const UpdateUser = (
+  { params, response }: { params: { id: string }; response: any },
+) => {
+  response.body = "Updated User, with id:  " + params.id;
+};
+
+const DeleteUser = (
+  { params, response }: { params: { id: string }; response: any },
+) => {
+  response.body = "Deleted User, with id: " + params.id;
+};
+
+
 export {
   GetUsers,
   GetUser,
-  AddUser
+  AddUser,
+  UpdateUser,
+  DeleteUser
 };
