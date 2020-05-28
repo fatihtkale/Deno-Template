@@ -1,7 +1,7 @@
 export interface User {
-  Id: BigInt;
+  Id: string;
   Username: string;
   Password: string;
   Email: string;
-  Image: URL;
+  Image: string;
 }

@@ -1,13 +1,31 @@
 import { User } from "../types/User.ts";
+import { UserData } from "../Mock/MockUserData.ts";
 
 const GetUsers = ({ response }: { response: any }) => {
-  response.body = "Hello World!";
+  response.body = {
+    success: true,
+    data: UserData
+  };
 };
 
 const GetUser = (
   { params, response }: { params: { id: string }; response: any },
 ) => {
-  response.body = "Hello World! " + params.id;
+  const user : User | undefined = UserData.find((u) => u.Id === params.id) 
+
+  if (user) {
+    response.status = 200;
+    response.body = {
+      success: true,
+      data: user
+    }
+  }else{
+    response.status = 404;
+    response.body = {
+      success: false,
+      msg: "User not found"
+    }
+  }
 };
 
 const AddUser = async (
@@ -33,7 +51,7 @@ const AddUser = async (
 const UpdateUser = (
   { params, response }: { params: { id: string }; response: any },
 ) => {
-  response.body = "Updated User, with id:  " + params.id;
+
 };
 
 const DeleteUser = (
