@@ -32,7 +32,7 @@ const AddUser = async (
   { request, response }: { response: any; request: any },
 ) => {
   if (!request.hasBody) {
-    response.status = 400;
+    response.status = 404;
     response.body = {
       success: false,
       message: "No data has been set!",
@@ -41,6 +41,7 @@ const AddUser = async (
     const value = await request.body();
     const user: User = value;
 
+    response.status = 200;
     response.body = {
       inputtedata: user,
       success: true
@@ -49,7 +50,7 @@ const AddUser = async (
 };
 
 const UpdateUser = (
-  { params, response }: { params: { id: string }; response: any },
+  { params, request, response }: { params: { id: string }; response: any, request: any },
 ) => {
 
 };

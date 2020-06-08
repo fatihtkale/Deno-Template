@@ -12,6 +12,10 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.request.method} ${ctx.request.url} - ${rt} | ${ctx.response.status || 404}`);
 });
 
+app.addEventListener("error", (evt) => {
+  console.log(evt.error);
+});
+
 app.use(async (ctx, next) => {
   const start = Date.now();
   await next();
