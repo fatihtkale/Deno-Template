@@ -14,5 +14,7 @@ But what have done is...
 For running this project you would need to input 1 very small command
 
 ```js
-deno run --allow-net src/index.ts
+denon start
 ```
+
+If you want to use REAL data you can go a head and delete the "Mock" folder and remove it from the controllers part!
